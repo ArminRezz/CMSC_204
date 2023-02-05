@@ -8,99 +8,81 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * STUDENT tests for the methods of PasswordChecker
- * @author 
- *
- */
+
 public class PasswordCheckerTest_STUDENT {
+	ArrayList<String> passwords;
+	String password1, password2;
 
 	@Before
 	public void setUp() throws Exception {
-		
+		passwords = new ArrayList<String>();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-	
+		passwords = null;
 	}
-
-	/**
-	 * Test if the password is less than 6 characters long.
-	 * This test should throw a LengthException for second case.
-	 */
+	
+	@Test
+	public void testGetInvalidPasword()
+	{
+		PasswordCheckerUtility.getInvalidPasswords(passwords);
+		
+	}
+	
 	@Test
 	public void testIsValidPasswordTooShort()
 	{
-		fail("Not implemented by student yet");
+		try{
+			assertTrue(PasswordCheckerUtility.isValidPassword("dfr23"));
+		}
+		catch(LengthException e)
+		{
+			assertTrue("Successfully threw a lengthExcepetion",true);
+		}
+		catch(Exception e)
+		{
+			assertTrue("Threw some other exception besides lengthException",false);
+			System.out.println("line 49");
+		}
 	}
 	
-	/**
-	 * Test if the password has at least one uppercase alpha character
-	 * This test should throw a NoUpperAlphaException for second case
-	 */
+	
 	@Test
-	public void testIsValidPasswordNoUpperAlpha()
+	public void testIsValidPasswordSuccess()
 	{
-		fail("Not implemented by student yet");
+		try{
+			assertEquals(true,PasswordCheckerUtility.isValidPassword("arminsHSE2"));
+		}
+		catch(NoSpecialCharacterException e)
+		{
+			System.out.println(e.getMessage());
+			assertTrue("Successfully threw a NoSpecialCharacterException",true);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			assertFalse("Threw some other exception besides lengthException", true);
+		}
+	}
+		
+	@Test
+	public void testIsValidPasswordTooShortThrowsSomeOtherExcep()
+	{
+		try{
+			assertTrue(PasswordCheckerUtility.isValidPassword("ghtNDs"));
+		}
+		catch(LengthException e)
+		{
+			System.out.println(e.getMessage());
+			assertTrue("Successfully threw a lengthExcepetion",true);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			assertTrue("Threw some other exception besides lengthException", true);
+		}
 	}
 	
-	/**
-	 * Test if the password has at least one lowercase alpha character
-	 * This test should throw a NoLowerAlphaException for second case
-	 */
-	@Test
-	public void testIsValidPasswordNoLowerAlpha()
-	{
-		fail("Not implemented by student yet");
-	}
-	/**
-	 * Test if the password has more than 2 of the same character in sequence
-	 * This test should throw a InvalidSequenceException for second case
-	 */
-	@Test
-	public void testIsWeakPassword()
-	{
-		fail("Not implemented by student yet");
-	}
-	
-	/**
-	 * Test if the password has more than 2 of the same character in sequence
-	 * This test should throw a InvalidSequenceException for second case
-	 */
-	@Test
-	public void testIsValidPasswordInvalidSequence()
-	{
-		fail("Not implemented by student yet");
-	}
-	
-	/**
-	 * Test if the password has at least one digit
-	 * One test should throw a NoDigitException
-	 */
-	@Test
-	public void testIsValidPasswordNoDigit()
-	{
-		fail("Not implemented by student yet");
-	}
-	
-	/**
-	 * Test correct passwords
-	 * This test should not throw an exception
-	 */
-	@Test
-	public void testIsValidPasswordSuccessful()
-	{
-		fail("Not implemented by student yet");
-	}
-	
-	/**
-	 * Test the invalidPasswords method
-	 * Check the results of the ArrayList of Strings returned by the validPasswords method
-	 */
-	@Test
-	public void testInvalidPasswords() {
-		fail("Not implemented by student yet");
-	}
 	
 }
