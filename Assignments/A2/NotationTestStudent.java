@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
-public class NotationTest {
+public class NotationTestStudent {
 	public String complexInfix = "(3+(((5*7)-(((8/2)-1)*4))*6))";
 	public String complexPostfix =  "357*82/1-4*-6*+";
 	public String easyInfix = "(5+4)";
@@ -23,6 +23,7 @@ public class NotationTest {
 	public double evalIntermediatePostfix = 29.0;
 	public double evalEasyPostfix = 9.0;
 
+
 	@BeforeEach	
 	public void setUp() throws Exception {
 	}
@@ -32,19 +33,19 @@ public class NotationTest {
 	}
 
 	@Test
-	public void testComplexConvertInfixToPostfix() {
+	public void testComplexConvertInfixToPostfix() throws InvalidNotationFormatException {
 		String postfixResult = Notation.convertInfixToPostfix(complexInfix);
 		assertEquals(complexPostfix, postfixResult);
 	}
 	
 	@Test
-	public void testIntermediateConvertInfixToPostfix() {
+	public void testIntermediateConvertInfixToPostfix() throws InvalidNotationFormatException {
 		String postfixResult = Notation.convertInfixToPostfix(intermediateInfix);
 		assertEquals(intermediatePostfix, postfixResult);
 	}
 	
 	@Test
-	public void testEasyConvertInfixToPostfix() {
+	public void testEasyConvertInfixToPostfix() throws InvalidNotationFormatException {
 		String postfixResult = Notation.convertInfixToPostfix(easyInfix);
 		assertEquals(easyPostfix, postfixResult);
 	}
@@ -62,19 +63,19 @@ public class NotationTest {
 	}
 	
 	@Test
-	public void testComplexConvertPostfixToInfix() {
+	public void testComplexConvertPostfixToInfix() throws InvalidNotationFormatException {
 		String infixResult = Notation.convertPostfixToInfix(complexPostfix);
 		assertEquals(complexInfix, infixResult);
 	}
 	
 	@Test
-	public void testIntermediateConvertPostfixToInfix() {
+	public void testIntermediateConvertPostfixToInfix() throws InvalidNotationFormatException {
 		String infixResult = Notation.convertPostfixToInfix(intermediatePostfix);
 		assertEquals(intermediateInfix, infixResult);
 	}
 	
 	@Test
-	public void testEasyConvertPostfixToInfix() {
+	public void testEasyConvertPostfixToInfix() throws InvalidNotationFormatException {
 		String infixResult = Notation.convertPostfixToInfix(easyPostfix);
 		assertEquals(easyInfix, infixResult);
 	}
@@ -92,19 +93,19 @@ public class NotationTest {
 	}
 	
 	@Test
-	public void testComplexEvaluatePostfixExpression() {
+	public void testComplexEvaluatePostfixExpression() throws InvalidNotationFormatException {
 		double result = Notation.evaluatePostfixExpression(complexPostfix);
 		assertEquals(evalComplexPostfix, result, .001);
 	}
 	
 	@Test
-	public void testIntermediateEvaluatePostfixExpression() {
+	public void testIntermediateEvaluatePostfixExpression() throws InvalidNotationFormatException {
 		double result = Notation.evaluatePostfixExpression(intermediatePostfix);
 		assertEquals(evalIntermediatePostfix, result, .001);
 	}
 	
 	@Test
-	public void testEasyEvaluatePostfixExpression() {
+	public void testEasyEvaluatePostfixExpression() throws InvalidNotationFormatException {
 		double result = Notation.evaluatePostfixExpression(easyPostfix);
 		assertEquals(evalEasyPostfix, result, .001);
 	}
