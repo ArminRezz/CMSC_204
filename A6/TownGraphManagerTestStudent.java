@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 
-public class TownGraphManagerTest {
+public class TownGraphManagerTestStudent {
 	private TownGraphManagerInterface graph;
 	private String[] town;
 	  
